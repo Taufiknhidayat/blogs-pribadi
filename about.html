@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang & Kontak - PERSPEKTIF.</title>
+    <meta name="description" content="Hubungi kami atau pelajari lebih lanjut tentang PERSPEKTIF. Blog pribadi tentang teknologi, desain, dan pemikiran kontemporer.">
+    <meta name="keywords" content="kontak, tentang, profil, hubungi, blog pribadi">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tentang & Kontak - PERSPEKTIF.">
+    <meta property="og:description" content="Hubungi kami atau pelajari lebih lanjut tentang PERSPEKTIF.">
+    <meta property="og:type" content="website">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -32,9 +40,40 @@
         }
     </script>
     <style>
-        body { background-color: #f3f4f6; color: #121212; } /* Background sedikit abu */
+        body { background-color: #f3f4f6; color: #121212; }
         .b-border { border: 2px solid #000000; }
-        input:focus, textarea:focus { outline: none; box-shadow: 4px 4px 0px 0px #2563eb; border-color: #2563eb; }
+        input:focus, textarea:focus, select:focus { 
+            outline: none; 
+            box-shadow: 4px 4px 0px 0px #2563eb; 
+            border-color: #2563eb; 
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        .success-message.show {
+            display: block;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="font-display antialiased min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
@@ -44,8 +83,8 @@
         <!-- BAGIAN KIRI: PROFIL -->
         <div class="p-8 md:p-12 flex flex-col justify-between border-b-2 md:border-b-0 md:border-r-2 border-black bg-white relative">
             
-            <!-- Pattern Background (Optional decoration) -->
-            <div class="absolute top-0 right-0 p-4 opacity-10 font-logo text-9xl leading-none select-none overflow-hidden pointer-events-none text-right">
+            <!-- Pattern Background - Reduced Opacity -->
+            <div class="absolute top-0 right-0 p-4 opacity-5 font-logo text-9xl leading-none select-none overflow-hidden pointer-events-none text-right" aria-hidden="true">
                 WHO<br>AM<br>I?
             </div>
 
@@ -55,16 +94,16 @@
                 <h1 class="font-logo text-5xl md:text-6xl mb-6 leading-none">PENULIS<br>& PEMIKIR<span class="text-brand-blue">.</span></h1>
                 
                 <p class="font-serif text-xl text-gray-800 leading-relaxed mb-6">
-                    Halo, saya <strong>[Nama Anda]</strong>. Saya bukan jurnalis, hanya seseorang yang gemar mengamati dunia dan menuliskannya sebelum lupa.
+                    Halo, saya <strong>penulis PERSPEKTIF</strong>. Saya bukan jurnalis, hanya seseorang yang gemar mengamati dunia dan menuliskannya sebelum lupa.
                 </p>
-                <p class="font-display text-gray-600 leading-relaxed mb-6">
+                <p class="font-display text-gray-700 leading-relaxed mb-6">
                     Blog ini adalah arsip digital dari kekacauan isi kepala saya. Mulai dari teknologi, desain, hingga pertanyaan eksistensial kenapa mie instan rasanya lebih enak kalau dimasak orang lain.
                 </p>
 
-                <div class="flex gap-4 mt-8">
-                    <a href="#" class="font-mono font-bold text-sm border-b-2 border-black hover:text-brand-blue hover:border-brand-blue">INSTAGRAM</a>
-                    <a href="#" class="font-mono font-bold text-sm border-b-2 border-black hover:text-brand-blue hover:border-brand-blue">TWITTER</a>
-                    <a href="#" class="font-mono font-bold text-sm border-b-2 border-black hover:text-brand-blue hover:border-brand-blue">LINKEDIN</a>
+                <div class="flex gap-4 mt-8 flex-wrap">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="font-mono font-bold text-sm border-b-2 border-black hover:text-brand-blue hover:border-brand-blue transition">INSTAGRAM</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="font-mono font-bold text-sm border-b-2 border-black hover:text-brand-blue hover:border-brand-blue transition">TWITTER</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="font-mono font-bold text-sm border-b-2 border-black hover:text-brand-blue hover:border-brand-blue transition">LINKEDIN</a>
                 </div>
             </div>
 
@@ -74,44 +113,122 @@
         </div>
 
         <!-- BAGIAN KANAN: FORM KONTAK -->
-        <div class="p-8 md:p-12 bg-gray-50">
+        <div id="contact" class="p-8 md:p-12 bg-gray-50">
             <h2 class="font-logo text-3xl mb-6">HUBUNGI SAYA</h2>
-            <form class="space-y-6">
+            
+            <!-- Success Message -->
+            <div id="success-message" class="success-message bg-brand-blue text-white p-4 mb-6 border-2 border-black">
+                <p class="font-bold font-mono text-sm">✓ PESAN TERKIRIM!</p>
+                <p class="text-sm mt-1">Terima kasih, pesan Anda akan segera kami baca.</p>
+            </div>
+
+            <form id="contact-form" class="space-y-6" onsubmit="handleContactForm(event)">
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="flex flex-col">
-                        <label class="font-mono text-xs font-bold mb-2 uppercase">Nama Lengkap</label>
-                        <input type="text" class="border-2 border-black p-3 font-display bg-white transition-all" placeholder="John Doe">
+                        <label for="name" class="font-mono text-xs font-bold mb-2 uppercase">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" class="border-2 border-black p-3 font-display bg-white transition-all" placeholder="John Doe" required>
                     </div>
                     <div class="flex flex-col">
-                        <label class="font-mono text-xs font-bold mb-2 uppercase">Email</label>
-                        <input type="email" class="border-2 border-black p-3 font-display bg-white transition-all" placeholder="john@email.com">
+                        <label for="email" class="font-mono text-xs font-bold mb-2 uppercase">Email</label>
+                        <input type="email" id="email" name="email" class="border-2 border-black p-3 font-display bg-white transition-all" placeholder="john@email.com" required>
                     </div>
                 </div>
 
                 <div class="flex flex-col">
-                    <label class="font-mono text-xs font-bold mb-2 uppercase">Subjek</label>
-                    <select class="border-2 border-black p-3 font-display bg-white transition-all appearance-none rounded-none">
-                        <option>Sekadar menyapa</option>
-                        <option>Tawaran Kerjasama</option>
-                        <option>Kritik & Saran</option>
-                        <option>Lainnya</option>
+                    <label for="subject" class="font-mono text-xs font-bold mb-2 uppercase">Subjek</label>
+                    <select id="subject" name="subject" class="border-2 border-black p-3 font-display bg-white transition-all appearance-none rounded-none cursor-pointer" required>
+                        <option value="">-- Pilih Subjek --</option>
+                        <option value="greeting">Sekadar menyapa</option>
+                        <option value="collaboration">Tawaran Kerjasama</option>
+                        <option value="feedback">Kritik & Saran</option>
+                        <option value="other">Lainnya</option>
                     </select>
                 </div>
 
                 <div class="flex flex-col">
-                    <label class="font-mono text-xs font-bold mb-2 uppercase">Pesan</label>
-                    <textarea rows="5" class="border-2 border-black p-3 font-display bg-white transition-all" placeholder="Tuliskan sesuatu yang menarik..."></textarea>
+                    <label for="message" class="font-mono text-xs font-bold mb-2 uppercase">Pesan</label>
+                    <textarea id="message" name="message" rows="5" class="border-2 border-black p-3 font-display bg-white transition-all" placeholder="Tuliskan sesuatu yang menarik..." required></textarea>
                 </div>
 
-                <button type="button" class="w-full bg-black text-white font-bold font-mono py-4 border-2 border-black hover:bg-brand-blue hover:border-brand-blue shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                <button type="submit" class="w-full bg-black text-white font-bold font-mono py-4 border-2 border-black hover:bg-brand-blue hover:border-brand-blue shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
                     KIRIM PESAN
                 </button>
 
             </form>
+
+            <!-- Alternative Contact Methods -->
+            <div class="mt-8 pt-8 border-t border-gray-300">
+                <p class="font-mono text-xs font-bold mb-3 text-gray-600">ATAU HUBUNGI VIA:</p>
+                <div class="space-y-2 text-sm">
+                    <p class="font-display">
+                        <span class="font-bold">Email:</span> 
+                        <a href="mailto:hello@perspektif.blog" class="text-brand-blue hover:underline">hello@perspektif.blog</a>
+                    </p>
+                    <p class="font-display">
+                        <span class="font-bold">Twitter:</span> 
+                        <a href="https://twitter.com/perspektifblog" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:underline">@perspektifblog</a>
+                    </p>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-8 font-mono text-xs text-gray-500">
+        © <span data-year>2024</span> PERSPEKTIF. Blog Pribadi.
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Contact Form Handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Log data (in production, this would be sent to a server)
+            console.log('Form Data:', data);
+            
+            // Show success message
+            const successMessage = document.getElementById('success-message');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            form.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        // Dynamic Year
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElements = document.querySelectorAll('[data-year]');
+            const currentYear = new Date().getFullYear();
+            yearElements.forEach(el => el.textContent = currentYear);
+        });
+
+        // Form validation enhancement
+        const form = document.getElementById('contact-form');
+        const inputs = form.querySelectorAll('input, textarea, select');
+        
+        inputs.forEach(input => {
+            input.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.classList.add('border-red-500');
+            });
+            
+            input.addEventListener('input', function() {
+                this.classList.remove('border-red-500');
+            });
+        });
+    </script>
 
 </body>
 </html>

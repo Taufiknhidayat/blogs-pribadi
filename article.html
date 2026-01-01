@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matinya Sebuah Hobi - PERSPEKTIF.</title>
+    <title>Matinya Sebuah Hobi di Era Konten - PERSPEKTIF.</title>
+    <meta name="description" content="Ketika semua hal yang kita sukai dipaksa menjadi side hustle, apakah kita masih bisa menikmati sesuatu tanpa harus memotretnya?">
+    <meta name="keywords" content="hobi, konten, side hustle, monetisasi, social media">
+    <meta name="author" content="PERSPEKTIF">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Matinya Sebuah Hobi di Era Konten">
+    <meta property="og:description" content="Ketika semua hal yang kita sukai dipaksa menjadi side hustle, apakah kita masih bisa menikmati sesuatu tanpa harus memotretnya?">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Matinya Sebuah Hobi di Era Konten">
+    <meta name="twitter:description" content="Ketika semua hal yang kita sukai dipaksa menjadi side hustle.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts (Sama dengan Index) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -36,10 +52,32 @@
         body { background-color: #ffffff; color: #121212; }
         .b-border { border: 2px solid #000000; }
         
-        /* Typography Customization for Article */
-        .prose p { margin-bottom: 1.5rem; line-height: 1.8; font-family: 'DM Serif Display', serif; font-size: 1.125rem; }
-        .prose h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.875rem; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.05em; }
-        .prose blockquote { border-left: 4px solid #2563eb; padding-left: 1.5rem; font-style: italic; margin: 2rem 0; font-size: 1.25rem; background: #f3f4f6; padding: 1.5rem; }
+        /* Typography for Article */
+        .prose p { 
+            margin-bottom: 1.5rem; 
+            line-height: 1.8; 
+            font-family: 'DM Serif Display', serif; 
+            font-size: 1.125rem;
+            color: #374151;
+        }
+        .prose h2 { 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 900; 
+            font-size: 1.875rem; 
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+            letter-spacing: -0.05em;
+            color: #121212;
+        }
+        .prose blockquote { 
+            border-left: 4px solid #2563eb; 
+            padding-left: 1.5rem; 
+            font-style: italic; 
+            margin: 2rem 0; 
+            font-size: 1.25rem; 
+            background: #f3f4f6; 
+            padding: 1.5rem;
+        }
         
         .drop-cap::first-letter {
             float: left;
@@ -50,34 +88,68 @@
             padding-top: 4px;
             font-family: 'Inter', sans-serif;
         }
+
+        /* Reading Progress Bar */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: #2563eb;
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="font-display antialiased min-h-screen flex flex-col">
 
-    <!-- COMPACT HEADER (Beda dikit dari Home biar fokus baca) -->
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress"></div>
+
+    <!-- COMPACT HEADER -->
     <header class="border-b-4 border-black sticky top-0 bg-white z-50">
         <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="font-logo text-2xl md:text-3xl tracking-tighter hover:text-brand-blue transition-colors">PERSPEKTIF<span class="text-brand-blue">.</span></a>
-            <nav class="hidden md:flex gap-6 font-bold text-sm uppercase">
-                <a href="#" class="hover:underline decoration-2 underline-offset-4">Teknologi</a>
-                <a href="#" class="hover:underline decoration-2 underline-offset-4">Desain</a>
-                <a href="about.html" class="hover:underline decoration-2 underline-offset-4">Kontak</a>
+            <nav class="hidden md:flex gap-6 font-bold text-sm uppercase" aria-label="Main navigation">
+                <a href="index.html" class="hover:underline decoration-2 underline-offset-4">Home</a>
+                <a href="archive.html" class="hover:underline decoration-2 underline-offset-4">Tulisan</a>
+                <a href="about.html" class="hover:underline decoration-2 underline-offset-4">Tentang</a>
+                <a href="about.html#contact" class="hover:underline decoration-2 underline-offset-4">Kontak</a>
             </nav>
-            <button class="md:hidden font-bold border-2 border-black px-2 text-xs">MENU</button>
+            <button onclick="toggleMobileMenu()" class="md:hidden font-bold border-2 border-black px-3 py-1 text-xs">MENU</button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t-2 border-black bg-white">
+            <nav class="flex flex-col">
+                <a href="index.html" class="px-4 py-3 border-b border-gray-200 font-bold hover:bg-gray-50">Home</a>
+                <a href="archive.html" class="px-4 py-3 border-b border-gray-200 font-bold hover:bg-gray-50">Tulisan</a>
+                <a href="about.html" class="px-4 py-3 border-b border-gray-200 font-bold hover:bg-gray-50">Tentang</a>
+                <a href="about.html#contact" class="px-4 py-3 font-bold hover:bg-gray-50">Kontak</a>
+            </nav>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto w-full px-4 md:px-6 py-8 md:py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-        <!-- LEFT CONTENT (ARTICLE) - 8 Columns -->
+        <!-- LEFT CONTENT (ARTICLE) -->
         <article class="lg:col-span-8">
             
             <!-- Breadcrumb -->
-            <div class="font-mono text-xs text-gray-500 mb-4 uppercase tracking-widest">
-                <a href="#" class="border-b border-gray-400 hover:border-brand-blue hover:text-brand-blue">Home</a> / 
-                <a href="#" class="border-b border-gray-400 hover:border-brand-blue hover:text-brand-blue">Opini</a> / 
+            <nav aria-label="Breadcrumb" class="font-mono text-xs text-gray-500 mb-4 uppercase tracking-widest">
+                <a href="index.html" class="border-b border-gray-400 hover:border-brand-blue hover:text-brand-blue">Home</a> / 
+                <a href="archive.html" class="border-b border-gray-400 hover:border-brand-blue hover:text-brand-blue">Tulisan</a> / 
                 <span>Reading</span>
-            </div>
+            </nav>
 
             <!-- Header Artikel -->
             <h1 class="font-display font-black text-4xl md:text-6xl lg:text-7xl leading-none mb-6">
@@ -88,7 +160,7 @@
             <div class="border-y-2 border-black py-4 mb-8 grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs md:text-sm">
                 <div>
                     <span class="block text-gray-500 mb-1">PENULIS</span>
-                    <span class="font-bold">AI GENERATED</span>
+                    <span class="font-bold">PERSPEKTIF</span>
                 </div>
                 <div>
                     <span class="block text-gray-500 mb-1">TANGGAL</span>
@@ -96,7 +168,7 @@
                 </div>
                 <div>
                     <span class="block text-gray-500 mb-1">KATEGORI</span>
-                    <span class="font-bold uppercase text-brand-blue">Sosial & Tech</span>
+                    <a href="archive.html#teknologi" class="font-bold uppercase text-brand-blue hover:underline">Teknologi</a>
                 </div>
                 <div>
                     <span class="block text-gray-500 mb-1">DURASI</span>
@@ -104,14 +176,21 @@
                 </div>
             </div>
 
+            <!-- Social Share Buttons -->
+            <div class="mb-8 flex gap-3 flex-wrap">
+                <button onclick="shareArticle('twitter')" class="font-mono text-xs font-bold border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition">SHARE → TWITTER</button>
+                <button onclick="shareArticle('facebook')" class="font-mono text-xs font-bold border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition">SHARE → FACEBOOK</button>
+                <button onclick="shareArticle('copy')" class="font-mono text-xs font-bold border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition">COPY LINK</button>
+            </div>
+
             <!-- Featured Image -->
             <figure class="mb-10 shadow-brutal border-2 border-black">
-                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500" alt="Ilustrasi kehidupan analog dan hobi tanpa dokumentasi digital" loading="lazy">
                 <figcaption class="bg-black text-white p-2 font-mono text-xs text-center">FIG 1.0 - Ilustrasi Kehidupan Analog</figcaption>
             </figure>
 
             <!-- Isi Konten -->
-            <div class="prose max-w-none text-gray-800">
+            <div class="prose max-w-none">
                 <p class="drop-cap">
                     Apakah Anda masih ingat kapan terakhir kali melakukan sesuatu hanya karena Anda menyukainya? Tanpa kamera yang merekam, tanpa caption yang dirancang di kepala, dan tanpa ekspektasi "likes". Di era di mana "personal branding" menjadi agama baru, hobi perlahan kehilangan jiwanya.
                 </p>
@@ -134,33 +213,36 @@
                 <p>
                     Mungkin resolusi terbaik tahun ini adalah: <em>Jadilah biasa-biasa saja dalam suatu hal, dan nikmatilah.</em> Melukislah walau jelek. Menyanyilah walau fals. Lakukan itu secara privat. Rasakan kebebasannya.
                 </p>
+                <p>
+                    Di dunia yang terus-menerus menuntut excellence dan optimization, keberanian terbesar adalah mengizinkan diri sendiri untuk menjadi biasa saja. Untuk melakukan sesuatu tanpa tujuan selain kesenangan itu sendiri. Itulah hobi sejati—bukan konten, bukan hustle, hanya kegembiraan murni.
+                </p>
             </div>
 
             <!-- Tags -->
             <div class="mt-12 pt-6 border-t-2 border-dashed border-gray-400">
                 <span class="font-mono text-xs font-bold mr-2">TAGS:</span>
-                <a href="#" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#SOCIALMEDIA</a>
-                <a href="#" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#MENTALHEALTH</a>
-                <a href="#" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#SLOWLIVING</a>
+                <a href="archive.html" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#SOCIALMEDIA</a>
+                <a href="archive.html" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#MENTALHEALTH</a>
+                <a href="archive.html" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#SLOWLIVING</a>
             </div>
 
             <!-- Author Box -->
             <div class="mt-12 border-2 border-black p-6 bg-gray-50 flex flex-col md:flex-row gap-6 items-center md:items-start shadow-brutal">
                 <div class="w-20 h-20 bg-gray-300 rounded-full border-2 border-black overflow-hidden flex-shrink-0">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Author">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar penulis">
                 </div>
                 <div>
-                    <h4 class="font-display font-black text-xl mb-2">TENTANG PENULIS</h4>
-                    <p class="font-serif text-sm text-gray-600 mb-3">
+                    <h3 class="font-display font-black text-xl mb-2">TENTANG PENULIS</h3>
+                    <p class="font-serif text-sm text-gray-700 mb-3">
                         Seorang pengamat internet yang sering lupa log out. Menulis untuk menjaga kewarasan di tengah gempuran algoritma.
                     </p>
-                    <a href="#" class="font-mono text-xs font-bold text-brand-blue border-b border-brand-blue">LIHAT PROFIL LENGKAP →</a>
+                    <a href="about.html" class="font-mono text-xs font-bold text-brand-blue border-b border-brand-blue hover:text-black hover:border-black transition">LIHAT PROFIL LENGKAP →</a>
                 </div>
             </div>
 
         </article>
 
-        <!-- RIGHT SIDEBAR - 4 Columns -->
+        <!-- RIGHT SIDEBAR -->
         <aside class="lg:col-span-4 space-y-12">
             
             <!-- Widget: Next Read -->
@@ -168,28 +250,30 @@
                 <div class="bg-black text-white p-3 font-mono text-sm font-bold border-b-2 border-black">
                     BACAAN SELANJUTNYA
                 </div>
-                <div>
-                    <a href="#" class="block p-4 border-b border-black hover:bg-brand-blue hover:text-white transition group">
-                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white">Opini • 3 Min</span>
+                <nav aria-label="Related articles">
+                    <a href="article.html" class="block p-4 border-b border-black hover:bg-brand-blue hover:text-white transition group">
+                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white block">Esai • 3 Min</span>
                         <h4 class="font-bold text-lg leading-tight">Kenapa Kopi Instan Itu Sebenarnya Enak</h4>
                     </a>
-                    <a href="#" class="block p-4 border-b border-black hover:bg-brand-blue hover:text-white transition group">
-                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white">Tech • 7 Min</span>
-                        <h4 class="font-bold text-lg leading-tight">Review iPhone 15 dari Pengguna Android Garis Keras</h4>
+                    <a href="article.html" class="block p-4 border-b border-black hover:bg-brand-blue hover:text-white transition group">
+                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white block">Tech • 7 Min</span>
+                        <h4 class="font-bold text-lg leading-tight">Review iPhone 15 dari Pengguna Android</h4>
                     </a>
-                    <a href="#" class="block p-4 hover:bg-brand-blue hover:text-white transition group">
-                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white">Musik • 4 Min</span>
+                    <a href="article.html" class="block p-4 hover:bg-brand-blue hover:text-white transition group">
+                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white block">Musik • 4 Min</span>
                         <h4 class="font-bold text-lg leading-tight">Playlist Jazz untuk Bekerja</h4>
                     </a>
-                </div>
+                </nav>
             </div>
 
             <!-- Widget: Newsletter -->
             <div class="bg-brand-blue text-white p-6 shadow-brutal border-2 border-black">
                 <h3 class="font-logo text-2xl mb-2">JANGAN KETINGGALAN.</h3>
                 <p class="font-serif text-sm mb-4 opacity-90">Dapatkan esai terbaru langsung di inbox Anda. Tanpa spam, janji.</p>
-                <input type="email" placeholder="Email Anda..." class="w-full p-2 text-black font-mono text-sm border-2 border-black mb-2 focus:outline-none">
-                <button class="w-full bg-black text-white py-2 font-bold font-mono text-sm border-2 border-transparent hover:bg-white hover:text-black hover:border-black transition">SUBSCRIBE</button>
+                <form id="sidebar-newsletter" onsubmit="handleNewsletter(event)">
+                    <input type="email" placeholder="Email Anda..." class="w-full p-2 text-black font-mono text-sm border-2 border-black mb-2 focus:outline-none focus:ring-2 focus:ring-white" required>
+                    <button type="submit" class="w-full bg-black text-white py-2 font-bold font-mono text-sm border-2 border-transparent hover:bg-white hover:text-black hover:border-black transition">SUBSCRIBE</button>
+                </form>
             </div>
 
             <!-- Widget: Sticky Ad/Image -->
@@ -206,10 +290,79 @@
 
     </main>
 
-    <!-- FOOTER SIMPLE -->
-    <footer class="border-t-4 border-black py-8 mt-auto text-center">
-        <a href="index.html" class="font-bold font-mono text-sm hover:underline">← KEMBALI KE HALAMAN UTAMA</a>
+    <!-- FOOTER -->
+    <footer class="border-t-4 border-black py-8 mt-auto text-center bg-gray-50">
+        <a href="index.html" class="font-bold font-mono text-sm hover:underline hover:text-brand-blue">← KEMBALI KE HALAMAN UTAMA</a>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Reading Progress Bar
+        function updateReadingProgress() {
+            const article = document.querySelector('article');
+            const progressBar = document.getElementById('reading-progress');
+            
+            if (!article || !progressBar) return;
+            
+            const articleTop = article.offsetTop;
+            const articleHeight = article.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            const articleBottom = articleTop + articleHeight - windowHeight;
+            const scrollProgress = ((scrollTop - articleTop) / (articleBottom - articleTop)) * 100;
+            
+            const progress = Math.min(Math.max(scrollProgress, 0), 100);
+            progressBar.style.width = progress + '%';
+        }
+
+        window.addEventListener('scroll', updateReadingProgress);
+        window.addEventListener('resize', updateReadingProgress);
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Share Functions
+        function shareArticle(platform) {
+            const url = window.location.href;
+            const title = document.title;
+            
+            switch(platform) {
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'copy':
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('Link berhasil disalin!');
+                    }).catch(() => {
+                        alert('Gagal menyalin link. Silakan copy manual: ' + url);
+                    });
+                    break;
+            }
+        }
+
+        // Newsletter Handler
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const form = event.target;
+            const email = form.querySelector('input[type="email"]').value;
+            
+            alert('Terima kasih! Email Anda telah terdaftar: ' + email);
+            form.reset();
+        }
+
+        // Dynamic Year
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElements = document.querySelectorAll('[data-year]');
+            yearElements.forEach(el => el.textContent = new Date().getFullYear());
+        });
+    </script>
 
 </body>
 </html>
