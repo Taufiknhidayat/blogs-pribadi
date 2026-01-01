@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matinya Sebuah Hobi - PERSPEKTIF.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Sama dengan Index) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#2563eb',
+                        'off-black': '#121212',
+                    },
+                    fontFamily: {
+                        'logo': ['"Archivo Black"', 'sans-serif'],
+                        'display': ['"Inter"', 'sans-serif'],
+                        'serif': ['"DM Serif Display"', 'serif'],
+                        'mono': ['"Space Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'brutal': '5px 5px 0px 0px #000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; color: #121212; }
+        .b-border { border: 2px solid #000000; }
+        
+        /* Typography Customization for Article */
+        .prose p { margin-bottom: 1.5rem; line-height: 1.8; font-family: 'DM Serif Display', serif; font-size: 1.125rem; }
+        .prose h2 { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.875rem; margin-top: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.05em; }
+        .prose blockquote { border-left: 4px solid #2563eb; padding-left: 1.5rem; font-style: italic; margin: 2rem 0; font-size: 1.25rem; background: #f3f4f6; padding: 1.5rem; }
+        
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            font-weight: 900;
+            padding-right: 8px;
+            padding-top: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="font-display antialiased min-h-screen flex flex-col">
+
+    <!-- COMPACT HEADER (Beda dikit dari Home biar fokus baca) -->
+    <header class="border-b-4 border-black sticky top-0 bg-white z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="font-logo text-2xl md:text-3xl tracking-tighter hover:text-brand-blue transition-colors">PERSPEKTIF<span class="text-brand-blue">.</span></a>
+            <nav class="hidden md:flex gap-6 font-bold text-sm uppercase">
+                <a href="#" class="hover:underline decoration-2 underline-offset-4">Teknologi</a>
+                <a href="#" class="hover:underline decoration-2 underline-offset-4">Desain</a>
+                <a href="about.html" class="hover:underline decoration-2 underline-offset-4">Kontak</a>
+            </nav>
+            <button class="md:hidden font-bold border-2 border-black px-2 text-xs">MENU</button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-4 md:px-6 py-8 md:py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+        <!-- LEFT CONTENT (ARTICLE) - 8 Columns -->
+        <article class="lg:col-span-8">
+            
+            <!-- Breadcrumb -->
+            <div class="font-mono text-xs text-gray-500 mb-4 uppercase tracking-widest">
+                <a href="#" class="border-b border-gray-400 hover:border-brand-blue hover:text-brand-blue">Home</a> / 
+                <a href="#" class="border-b border-gray-400 hover:border-brand-blue hover:text-brand-blue">Opini</a> / 
+                <span>Reading</span>
+            </div>
+
+            <!-- Header Artikel -->
+            <h1 class="font-display font-black text-4xl md:text-6xl lg:text-7xl leading-none mb-6">
+                MATINYA SEBUAH HOBI DI ERA KONTEN.
+            </h1>
+
+            <!-- Meta Data Table -->
+            <div class="border-y-2 border-black py-4 mb-8 grid grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs md:text-sm">
+                <div>
+                    <span class="block text-gray-500 mb-1">PENULIS</span>
+                    <span class="font-bold">AI GENERATED</span>
+                </div>
+                <div>
+                    <span class="block text-gray-500 mb-1">TANGGAL</span>
+                    <span class="font-bold">25 OKT 2024</span>
+                </div>
+                <div>
+                    <span class="block text-gray-500 mb-1">KATEGORI</span>
+                    <span class="font-bold uppercase text-brand-blue">Sosial & Tech</span>
+                </div>
+                <div>
+                    <span class="block text-gray-500 mb-1">DURASI</span>
+                    <span class="font-bold">5 MENIT</span>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <figure class="mb-10 shadow-brutal border-2 border-black">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-500">
+                <figcaption class="bg-black text-white p-2 font-mono text-xs text-center">FIG 1.0 - Ilustrasi Kehidupan Analog</figcaption>
+            </figure>
+
+            <!-- Isi Konten -->
+            <div class="prose max-w-none text-gray-800">
+                <p class="drop-cap">
+                    Apakah Anda masih ingat kapan terakhir kali melakukan sesuatu hanya karena Anda menyukainya? Tanpa kamera yang merekam, tanpa caption yang dirancang di kepala, dan tanpa ekspektasi "likes". Di era di mana "personal branding" menjadi agama baru, hobi perlahan kehilangan jiwanya.
+                </p>
+                <p>
+                    Kita tidak lagi memasak untuk makan, kita memasak untuk Instagram Story. Kita tidak lagi lari pagi untuk sehat, kita lari untuk memposting rute GPS di Strava. Fenomena ini menciptakan apa yang saya sebut sebagai <strong>"Performatif Leisure"</strong>—waktu luang yang dipertunjukkan.
+                </p>
+
+                <h2>Monetisasi Kebahagiaan</h2>
+                <p>
+                    Tekanan untuk memonetisasi segala hal adalah racun modern. "Kamu jago gambar? Buka komisi dong!" atau "Suka ngopi? Jadi influencer kopi aja!". Kalimat-kalimat ini terdengar mendukung, tapi sebenarnya mereka mematikan ruang istirahat kita.
+                </p>
+                <blockquote>
+                    "Ketika hobi berubah menjadi pekerjaan sampingan (side hustle), kita kehilangan satu-satunya tempat persembunyian dari kapitalisme."
+                </blockquote>
+                <p>
+                    Tidak ada yang salah dengan mencari uang. Tapi manusia butuh ruang di mana mereka boleh menjadi amatir. Boleh melakukan kesalahan, boleh jelek hasilnya, dan boleh tidak produktif.
+                </p>
+
+                <h2>Kembali ke Mediokritas</h2>
+                <p>
+                    Mungkin resolusi terbaik tahun ini adalah: <em>Jadilah biasa-biasa saja dalam suatu hal, dan nikmatilah.</em> Melukislah walau jelek. Menyanyilah walau fals. Lakukan itu secara privat. Rasakan kebebasannya.
+                </p>
+            </div>
+
+            <!-- Tags -->
+            <div class="mt-12 pt-6 border-t-2 border-dashed border-gray-400">
+                <span class="font-mono text-xs font-bold mr-2">TAGS:</span>
+                <a href="#" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#SOCIALMEDIA</a>
+                <a href="#" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#MENTALHEALTH</a>
+                <a href="#" class="inline-block border border-black px-2 py-1 text-xs font-bold hover:bg-black hover:text-white transition mr-2">#SLOWLIVING</a>
+            </div>
+
+            <!-- Author Box -->
+            <div class="mt-12 border-2 border-black p-6 bg-gray-50 flex flex-col md:flex-row gap-6 items-center md:items-start shadow-brutal">
+                <div class="w-20 h-20 bg-gray-300 rounded-full border-2 border-black overflow-hidden flex-shrink-0">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Author">
+                </div>
+                <div>
+                    <h4 class="font-display font-black text-xl mb-2">TENTANG PENULIS</h4>
+                    <p class="font-serif text-sm text-gray-600 mb-3">
+                        Seorang pengamat internet yang sering lupa log out. Menulis untuk menjaga kewarasan di tengah gempuran algoritma.
+                    </p>
+                    <a href="#" class="font-mono text-xs font-bold text-brand-blue border-b border-brand-blue">LIHAT PROFIL LENGKAP →</a>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- RIGHT SIDEBAR - 4 Columns -->
+        <aside class="lg:col-span-4 space-y-12">
+            
+            <!-- Widget: Next Read -->
+            <div class="border-2 border-black p-0">
+                <div class="bg-black text-white p-3 font-mono text-sm font-bold border-b-2 border-black">
+                    BACAAN SELANJUTNYA
+                </div>
+                <div>
+                    <a href="#" class="block p-4 border-b border-black hover:bg-brand-blue hover:text-white transition group">
+                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white">Opini • 3 Min</span>
+                        <h4 class="font-bold text-lg leading-tight">Kenapa Kopi Instan Itu Sebenarnya Enak</h4>
+                    </a>
+                    <a href="#" class="block p-4 border-b border-black hover:bg-brand-blue hover:text-white transition group">
+                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white">Tech • 7 Min</span>
+                        <h4 class="font-bold text-lg leading-tight">Review iPhone 15 dari Pengguna Android Garis Keras</h4>
+                    </a>
+                    <a href="#" class="block p-4 hover:bg-brand-blue hover:text-white transition group">
+                        <span class="font-serif italic text-gray-500 text-xs mb-1 group-hover:text-white">Musik • 4 Min</span>
+                        <h4 class="font-bold text-lg leading-tight">Playlist Jazz untuk Bekerja</h4>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Widget: Newsletter -->
+            <div class="bg-brand-blue text-white p-6 shadow-brutal border-2 border-black">
+                <h3 class="font-logo text-2xl mb-2">JANGAN KETINGGALAN.</h3>
+                <p class="font-serif text-sm mb-4 opacity-90">Dapatkan esai terbaru langsung di inbox Anda. Tanpa spam, janji.</p>
+                <input type="email" placeholder="Email Anda..." class="w-full p-2 text-black font-mono text-sm border-2 border-black mb-2 focus:outline-none">
+                <button class="w-full bg-black text-white py-2 font-bold font-mono text-sm border-2 border-transparent hover:bg-white hover:text-black hover:border-black transition">SUBSCRIBE</button>
+            </div>
+
+            <!-- Widget: Sticky Ad/Image -->
+            <div class="sticky top-24">
+                <div class="border-2 border-black p-2 bg-gray-100 text-center">
+                    <p class="font-mono text-[10px] text-gray-400 mb-1">SPONSOR</p>
+                    <div class="h-64 bg-white border border-gray-300 flex items-center justify-center font-display font-black text-2xl text-gray-200">
+                        RUANG<br>IKLAN<br>ANDA
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="border-t-4 border-black py-8 mt-auto text-center">
+        <a href="index.html" class="font-bold font-mono text-sm hover:underline">← KEMBALI KE HALAMAN UTAMA</a>
+    </footer>
+
+</body>
+</html>

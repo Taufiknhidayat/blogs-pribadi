@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip Tulisan - PERSPEKTIF.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;600;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#2563eb',
+                        'off-black': '#121212',
+                    },
+                    fontFamily: {
+                        'logo': ['"Archivo Black"', 'sans-serif'],
+                        'display': ['"Inter"', 'sans-serif'],
+                        'serif': ['"DM Serif Display"', 'serif'],
+                        'mono': ['"Space Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'brutal': '5px 5px 0px 0px #000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; color: #121212; }
+        .b-border { border: 2px solid #000000; }
+        
+        /* Ticker Animation */
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        
+        /* Custom Checkbox Style for Filters */
+        .check-hidden:checked + label {
+            background-color: #2563eb;
+            color: white;
+            border-color: #000000;
+        }
+
+        /* Filter Animation */
+        .article-item {
+            transition: all 0.3s ease;
+        }
+        .hidden-item {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-display antialiased min-h-screen flex flex-col">
+
+    <!-- TOP TICKER (Sama dengan Home) -->
+    <div class="bg-brand-blue text-white font-mono text-xs uppercase py-2 border-b-2 border-black overflow-hidden whitespace-nowrap sticky top-0 z-50">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                +++ BREAKING: KOPI SAYA HABIS +++ MENULIS ADALAH CARA BERBICARA TANPA DIINTERUPSI +++ CUACA: CERAH BERAWAN +++ DEADLINE ITU MITOS +++ JANGAN LUPA MINUM AIR PUTIH +++ SELAMAT DATANG DI RUANG PIKIRAN SAYA +++ 
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAV & HEADER -->
+    <header class="max-w-7xl mx-auto w-full px-4 md:px-6 pt-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-4 border-black pb-4 mb-2">
+            <div class="w-full md:w-auto">
+                <p class="font-mono text-xs mb-1 text-gray-500 md:text-black">EDISI DIGITAL • DATABASE</p>
+                <h1 class="font-logo text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-none break-words">PERSPEKTIF<span class="text-brand-blue">.</span></h1>
+            </div>
+            <div class="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-2 mt-4 md:mt-0">
+                <span class="font-mono text-xs md:text-sm bg-black text-white px-2 py-1">JAKARTA, ID</span>
+                <span class="font-serif italic text-base md:text-lg text-right md:w-48 leading-tight">"Arsip Lengkap"</span>
+            </div>
+        </div>
+
+        <!-- Navigation Menu (Updated with Hash Links & Removed Active State on Teknologi) -->
+        <nav class="flex flex-col sm:flex-row border-b-2 border-black w-full">
+            <a href="index.html" class="flex-1 py-3 px-2 text-center font-bold border-b-2 sm:border-b-0 sm:border-r-2 border-black hover:bg-brand-blue hover:text-white transition-colors uppercase tracking-tight text-sm md:text-base">Utama</a>
+            <!-- Menggunakan ID #teknologi untuk filter otomatis -->
+            <a href="#teknologi" onclick="filterByLink('teknologi')" class="flex-1 py-3 px-2 text-center font-bold border-b-2 sm:border-b-0 sm:border-r-2 border-black hover:bg-brand-blue hover:text-white transition-colors uppercase tracking-tight text-sm md:text-base">Teknologi</a>
+            <a href="#desain" onclick="filterByLink('desain')" class="flex-1 py-3 px-2 text-center font-bold border-b-2 sm:border-b-0 sm:border-r-2 border-black hover:bg-brand-blue hover:text-white transition-colors uppercase tracking-tight text-sm md:text-base">Desain</a>
+            <a href="#esai" onclick="filterByLink('esai')" class="flex-1 py-3 px-2 text-center font-bold border-b-2 sm:border-b-0 sm:border-r-2 border-black hover:bg-brand-blue hover:text-white transition-colors uppercase tracking-tight text-sm md:text-base">Esai</a>
+            <a href="about.html" class="flex-1 py-3 px-2 text-center font-bold hover:bg-brand-blue hover:text-white transition-colors uppercase tracking-tight text-sm md:text-base">Kontak</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-4 md:px-6 py-8 md:py-12">
+
+        <!-- PAGE TITLE SECTION -->
+        <div class="mb-12 border-b-2 border-black pb-8">
+            <span class="font-mono text-xs font-bold bg-black text-white px-2 py-1 mb-4 inline-block">INDEX</span>
+            <h2 class="font-logo text-6xl md:text-7xl leading-none mb-4">SEMUA<br>TULISAN<span class="text-brand-blue">.</span></h2>
+            <p class="font-serif text-xl text-gray-600 max-w-2xl">
+                Kumpulan pemikiran yang berhasil lolos dari draft. Diurutkan berdasarkan tingkat kecemasan penulis saat membuatnya.
+            </p>
+        </div>
+
+        <!-- FILTER BAR -->
+        <div class="mb-12 sticky top-12 z-40 bg-white/95 backdrop-blur border-2 border-black p-4 shadow-brutal flex flex-wrap gap-4 items-center">
+            <span class="font-mono text-xs font-bold mr-2 uppercase">Filter Kategori:</span>
+            
+            <!-- Filter Options (Radio buttons styled as tags) -->
+            <div>
+                <input type="radio" name="category" id="cat-all" value="all" class="hidden check-hidden" checked onchange="filterArticles(this.value)">
+                <label for="cat-all" class="cursor-pointer border-2 border-black px-4 py-1 font-bold text-sm hover:bg-gray-100 transition-colors">SEMUA</label>
+            </div>
+            <div>
+                <input type="radio" name="category" id="cat-tech" value="teknologi" class="hidden check-hidden" onchange="filterArticles(this.value)">
+                <label for="cat-tech" class="cursor-pointer border-2 border-black px-4 py-1 font-bold text-sm hover:bg-gray-100 transition-colors">TEKNOLOGI</label>
+            </div>
+            <div>
+                <input type="radio" name="category" id="cat-design" value="desain" class="hidden check-hidden" onchange="filterArticles(this.value)">
+                <label for="cat-design" class="cursor-pointer border-2 border-black px-4 py-1 font-bold text-sm hover:bg-gray-100 transition-colors">DESAIN</label>
+            </div>
+            <div>
+                <input type="radio" name="category" id="cat-essay" value="esai" class="hidden check-hidden" onchange="filterArticles(this.value)">
+                <label for="cat-essay" class="cursor-pointer border-2 border-black px-4 py-1 font-bold text-sm hover:bg-gray-100 transition-colors">ESAI</label>
+            </div>
+        </div>
+
+        <!-- ARCHIVE GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" id="article-grid">
+
+            <!-- Item 1 (Large) -->
+            <article class="article-item group cursor-pointer" data-category="teknologi">
+                <div class="relative overflow-hidden border-2 border-black shadow-brutal mb-4 aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span class="absolute top-0 right-0 bg-brand-blue text-white px-2 py-1 font-mono text-xs font-bold">TECH</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xs text-gray-500 mb-2">25 OKT 2024</span>
+                    <a href="article.html">
+                        <h2 class="font-display font-black text-2xl md:text-3xl leading-tight mb-3 group-hover:text-brand-blue transition-colors">Matinya Sebuah Hobi di Era Konten.</h2>
+                    </a>
+                    <p class="font-serif text-gray-700 leading-relaxed line-clamp-3 mb-4">
+                        Ketika semua hal yang kita sukai dipaksa menjadi "side hustle", apakah kita masih bisa menikmati sesuatu tanpa harus memotretnya?
+                    </p>
+                    <a href="article.html" class="font-bold text-sm border-b-2 border-black w-max hover:text-brand-blue hover:border-brand-blue">BACA SELENGKAPNYA →</a>
+                </div>
+            </article>
+
+            <!-- Item 2 -->
+            <article class="article-item group cursor-pointer" data-category="esai">
+                <div class="relative overflow-hidden border-2 border-black shadow-brutal mb-4 aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs font-bold">ESAI</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xs text-gray-500 mb-2">18 OKT 2024</span>
+                    <a href="article.html">
+                        <h2 class="font-display font-black text-2xl md:text-3xl leading-tight mb-3 group-hover:text-brand-blue transition-colors">Rumah Kosong, Pikiran Penuh.</h2>
+                    </a>
+                    <p class="font-serif text-gray-700 leading-relaxed line-clamp-3 mb-4">
+                        Sebuah esai tentang paradoks minimalisme: memiliki sedikit barang tapi justru menambah beban pikiran akan estetika.
+                    </p>
+                    <a href="article.html" class="font-bold text-sm border-b-2 border-black w-max hover:text-brand-blue hover:border-brand-blue">BACA SELENGKAPNYA →</a>
+                </div>
+            </article>
+
+            <!-- Item 3 -->
+            <article class="article-item group cursor-pointer" data-category="teknologi">
+                <div class="relative overflow-hidden border-2 border-black shadow-brutal mb-4 aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span class="absolute top-0 right-0 bg-white text-black border-l-2 border-b-2 border-black px-2 py-1 font-mono text-xs font-bold">TECH</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xs text-gray-500 mb-2">10 OKT 2024</span>
+                    <a href="article.html">
+                        <h2 class="font-display font-black text-2xl md:text-3xl leading-tight mb-3 group-hover:text-brand-blue transition-colors">AI & Empati Buatan.</h2>
+                    </a>
+                    <p class="font-serif text-gray-700 leading-relaxed line-clamp-3 mb-4">
+                        Algoritma bisa menulis puisi, tapi ia tidak pernah merasakan patah hati. Apakah itu masalah?
+                    </p>
+                    <a href="article.html" class="font-bold text-sm border-b-2 border-black w-max hover:text-brand-blue hover:border-brand-blue">BACA SELENGKAPNYA →</a>
+                </div>
+            </article>
+
+            <!-- Item 4 -->
+            <article class="article-item group cursor-pointer" data-category="desain">
+                <div class="relative overflow-hidden border-2 border-black shadow-brutal mb-4 aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1542206395-9feb3edaa68d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span class="absolute top-0 right-0 bg-white text-black border-l-2 border-b-2 border-black px-2 py-1 font-mono text-xs font-bold">DESAIN</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xs text-gray-500 mb-2">01 OKT 2024</span>
+                    <a href="article.html">
+                        <h2 class="font-display font-black text-2xl md:text-3xl leading-tight mb-3 group-hover:text-brand-blue transition-colors">Tipografi Jalanan Jakarta.</h2>
+                    </a>
+                    <p class="font-serif text-gray-700 leading-relaxed line-clamp-3 mb-4">
+                        Menelusuri keindahan font pecel lele dan spanduk kampanye yang semrawut namun berkarakter.
+                    </p>
+                    <a href="article.html" class="font-bold text-sm border-b-2 border-black w-max hover:text-brand-blue hover:border-brand-blue">BACA SELENGKAPNYA →</a>
+                </div>
+            </article>
+
+            <!-- Item 5 -->
+            <article class="article-item group cursor-pointer" data-category="esai">
+                <div class="relative overflow-hidden border-2 border-black shadow-brutal mb-4 aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span class="absolute top-0 right-0 bg-black text-white px-2 py-1 font-mono text-xs font-bold">ESAI</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono text-xs text-gray-500 mb-2">28 SEP 2024</span>
+                    <a href="article.html">
+                        <h2 class="font-display font-black text-2xl md:text-3xl leading-tight mb-3 group-hover:text-brand-blue transition-colors">Kenapa Kita Suka Nostalgia?</h2>
+                    </a>
+                    <p class="font-serif text-gray-700 leading-relaxed line-clamp-3 mb-4">
+                        Masa lalu selalu terlihat lebih indah karena kita tahu bagaimana akhirnya.
+                    </p>
+                    <a href="article.html" class="font-bold text-sm border-b-2 border-black w-max hover:text-brand-blue hover:border-brand-blue">BACA SELENGKAPNYA →</a>
+                </div>
+            </article>
+
+            <!-- Item 6 (Text Only) -->
+            <article class="article-item group cursor-pointer border-2 border-black p-6 bg-gray-50 shadow-brutal flex flex-col justify-center items-center text-center hover:bg-black hover:text-white transition-all duration-300" data-category="all">
+                <span class="font-mono text-xs font-bold mb-4 opacity-50">ARCHIVE END</span>
+                <p class="font-serif italic text-xl mb-4">
+                    "Tulisan yang bagus tidak pernah selesai, hanya ditinggalkan."
+                </p>
+                <span class="font-mono text-xs">— Paul Valéry</span>
+            </article>
+
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="mt-16 flex justify-between items-center border-t-2 border-black pt-8">
+            <button disabled class="font-bold font-mono text-gray-400 cursor-not-allowed">← HALAMAN SEBELUMNYA</button>
+            <div class="font-mono text-sm">
+                <span class="bg-black text-white px-2 py-1">1</span>
+                <a href="#" class="px-2 py-1 hover:bg-gray-200">2</a>
+                <a href="#" class="px-2 py-1 hover:bg-gray-200">3</a>
+            </div>
+            <a href="#" class="font-bold font-mono hover:text-brand-blue">HALAMAN SELANJUTNYA →</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER (Sama dengan Home) -->
+    <footer class="bg-black text-white py-12 border-t-4 border-brand-blue">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="col-span-1 sm:col-span-2 md:col-span-2">
+                <h2 class="font-logo text-3xl md:text-4xl mb-4">PERSPEKTIF.</h2>
+                <p class="font-serif text-gray-400 text-sm md:text-base max-w-sm">
+                    Sebuah blog eksperimental yang didesain untuk dibaca, bukan sekadar di-scroll. Dibuat dengan cinta dan sedikit kecemasan.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-mono font-bold mb-4 text-brand-blue">NAVIGASI</h4>
+                <ul class="space-y-2 font-display text-sm">
+                    <li><a href="about.html" class="hover:text-brand-blue block py-1">Tentang</a></li>
+                    <li><a href="article.html" class="hover:text-brand-blue block py-1">Jurnal</a></li>
+                    <li><a href="#" class="hover:text-brand-blue block py-1">Proyek</a></li>
+                    <li><a href="#" class="hover:text-brand-blue block py-1">RSS Feed</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-mono font-bold mb-4 text-brand-blue">BULETIN</h4>
+                <div class="flex flex-col gap-2">
+                    <input type="email" placeholder="Email Anda" class="bg-gray-800 border-none text-white px-3 py-2 w-full focus:ring-1 focus:ring-brand-blue text-sm">
+                    <button class="bg-brand-blue px-3 py-2 font-bold text-sm hover:bg-white hover:text-black transition-colors">KIRIM</button>
+                </div>
+                <p class="text-xs text-gray-500 mt-2 font-mono">Tanpa spam. Janji.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-gray-800 text-center font-mono text-xs text-gray-500">
+            © 2024 PERSPEKTIF MEDIA. DESAIN OLEH AI.
+        </div>
+    </footer>
+
+    <!-- SCRIPT UNTUK FILTER -->
+    <script>
+        // Fungsi Filter Artikel
+        function filterArticles(category) {
+            const articles = document.querySelectorAll('.article-item');
+            
+            articles.forEach(article => {
+                const itemCategory = article.getAttribute('data-category');
+                
+                // Jika pilih "all", atau item ini adalah quote (kategori 'all'), atau kategori cocok
+                if (category === 'all' || itemCategory === 'all' || itemCategory === category) {
+                    article.classList.remove('hidden-item');
+                } else {
+                    article.classList.add('hidden-item');
+                }
+            });
+        }
+
+        // Fungsi Link Navigasi (untuk handle klik menu di atas)
+        function filterByLink(category) {
+            // Ubah radio button yang sesuai
+            const radio = document.querySelector(`input[name="category"][value="${category}"]`);
+            if (radio) {
+                radio.checked = true;
+                filterArticles(category);
+            }
+        }
+
+        // Cek URL Hash saat loading (misal: archive.html#desain)
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && ['teknologi', 'desain', 'esai'].includes(hash)) {
+                filterByLink(hash);
+            }
+        });
+    </script>
+
+</body>
+</html>
